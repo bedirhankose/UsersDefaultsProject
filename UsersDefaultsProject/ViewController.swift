@@ -41,6 +41,19 @@ class ViewController: UIViewController {
         TimeLabel.text = "When to do: \(TimeTextField.text!)"
     }
     @IBAction func DeleteButton(_ sender: Any) {
+        
+        let savedNote = UserDefaults.standard.object(forKey: "Note")
+        let savedTime = UserDefaults.standard.object(forKey: "Time")
+        
+        if (savedNote as? String) != nil {
+            UserDefaults.standard.removeObject(forKey: "Note")
+            NoteLabel.text = "Work to do: "
+        }
+        
+        if (savedTime as? String) != nil {
+            UserDefaults.standard.removeObject(forKey: "Time")
+            TimeLabel.text = "When to do: "
+        }
     }
     
 }
